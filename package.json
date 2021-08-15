@@ -1,0 +1,41 @@
+{
+  "name": "weather-forecast",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint . && prettier --check .",
+    "lint:fix": "eslint . --fix && prettier --write .",
+    "test": "jest",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oldbelom/otus-hw2-weather-forecast.git"
+  },
+  "author": "Oleg Artemov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oldbelom/otus-hw2-weather-forecast/issues"
+  },
+  "homepage": "https://github.com/oldbelom/otus-hw2-weather-forecast#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.9",
+    "@types/jest": "^26.0.24",
+    "babel-jest": "^27.0.6",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest": "^24.4.0",
+    "husky": "^7.0.1",
+    "jest": "^27.0.6",
+    "lint-staged": "^11.1.2",
+    "prettier": "2.3.2"
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix",
+    "*.{js,css,md,json,yml,html}": "prettier --write"
+  }
+}
