@@ -17,6 +17,7 @@ module.exports = {
         code: 100,
       },
     ],
+    "import/prefer-default-export": "off",
   },
   plugins: ["jest"],
 };
