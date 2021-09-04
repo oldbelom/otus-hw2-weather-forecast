@@ -1,0 +1,85 @@
+:root {
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  background-color: rgb(197, 236, 234);
+}
+
+#app {
+  height: 500px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#app > * {
+  margin: 0 2rem;
+  border-radius: 1.5rem;
+}
+
+.weather,
+.controls {
+  padding: 2rem;
+  filter: drop-shadow(0 0 7px rgba(0, 0, 0, 0.5));
+  background-color: khaki;
+}
+
+.map {
+  width: 500px;
+  height: 500px;
+  filter: drop-shadow(0 0 7px rgba(0, 0, 0, 0.5));
+}
+
+.weather {
+  min-width: 300px;
+  height: 100%;
+  text-align: center;
+
+  &__city {
+    font-size: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  &__degrees {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+}
+
+.controls {
+  &__list {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__list-item {
+    list-style: none;
+    margin-top: .6rem;
+    background-color: #7cda4c;
+    padding: .3rem 1rem;
+    border-radius: .2rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #59bf25;
+    }
+  }
+}
