@@ -19,6 +19,7 @@ module.exports = {
     ],
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": ["error", { devDependencies: true }],
+    "no-param-reassign": ["error", { props: false }],
   },
   plugins: ["jest"],
 };
