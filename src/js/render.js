@@ -18,3 +18,13 @@ export function renderBasicTemplate(rootElement) {
   btn.innerText = "Show weather";
   createEl("ul", "controls__list", controls);
 }
+
+export function renderCitiesList(list) {
+  if (localStorage.cities) {
+    const cities = JSON.parse(localStorage.cities);
+    for (let i = 0; i < cities.length; i += 1) {
+      const li = createEl("li", "controls__list-item", list);
+      li.innerText = cities[i];
+    }
+  }
+}

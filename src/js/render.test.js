@@ -1,7 +1,8 @@
-import { createEl, renderBasicTemplate } from "./render";
+import { createEl, renderBasicTemplate, renderCitiesList } from "./render";
 
 describe("render functions", () => {
   const body = document.querySelector("body");
+
   describe("createEl", () => {
     afterAll(() => {
       body.innerHTML = "";
@@ -23,6 +24,7 @@ describe("render functions", () => {
     beforeAll(() => {
       renderBasicTemplate(body);
     });
+
     it("render all main blocks", () => {
       expect(body.childElementCount).toBe(3);
     });
@@ -51,6 +53,27 @@ describe("render functions", () => {
     it("create correct ul tag", () => {
       expect(body.children[2].children[2].tagName).toBe("UL");
       expect(body.children[2].children[2].className).toBe("controls__list");
+    });
+  });
+
+  describe("renderCitiesList", () => {
+    let list;
+    beforeEach(() => {
+      document.body.innerHTML = `<div class="controls__list"></div>`;
+      list = document.querySelector(".controls__list");
+    });
+    it("render list items from array", () => {
+      localStorage.setItem(
+        "cities",
+        JSON.stringify(["Paris", "Monaco", "London"])
+      );
+      renderCitiesList(list);
+      expect(list.childElementCount).toBe(3);
+    });
+    it("do not render list item if no cities in the array", () => {
+      localStorage.setItem("cities", "");
+      renderCitiesList(list);
+      expect(list.childElementCount).toBe(0);
     });
   });
 });
