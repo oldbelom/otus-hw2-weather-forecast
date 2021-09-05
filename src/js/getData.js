@@ -31,7 +31,7 @@ export async function getWeather() {
   );
   const weatherData = await response.json();
   cityName.innerHTML = city;
-  degrees.innerHTML = Math.ceil(weatherData.main.temp - 273);
+  degrees.innerHTML = `${Math.ceil(weatherData.main.temp - 273)}&deg`;
   icon.innerHTML =
     `<img src="http://openweathermap.org/img/wn/` +
     `${weatherData.weather[0].icon}@2x.png">`;

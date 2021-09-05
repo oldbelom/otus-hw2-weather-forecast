@@ -39,20 +39,26 @@ describe("render functions", () => {
       expect(body.children[2].className).toBe("controls");
     });
     it("create correct input tag", () => {
-      expect(body.children[2].children[0].tagName).toBe("INPUT");
-      expect(body.children[2].children[0].className).toBe("controls__input");
+      expect(body.children[2].children[0].children[0].tagName).toBe("INPUT");
+      expect(body.children[2].children[0].children[0].className).toBe(
+        "controls__input"
+      );
       expect(
-        body.children[2].children[0].hasAttribute("placeholder")
+        body.children[2].children[0].children[0].hasAttribute("placeholder")
       ).toBeTruthy();
     });
-    it("create correct btn tag", () => {
-      expect(body.children[2].children[1].tagName).toBe("BUTTON");
-      expect(body.children[2].children[1].className).toBe("controls__btn");
-      expect(body.children[2].children[1].innerText).toBe("Show weather");
+    it("create correct btn", () => {
+      expect(body.children[2].children[0].children[1].tagName).toBe("INPUT");
+      expect(body.children[2].children[0].children[1].className).toBe(
+        "controls__btn"
+      );
+      expect(body.children[2].children[0].children[1].value).toBe(
+        "Show weather"
+      );
     });
     it("create correct ul tag", () => {
-      expect(body.children[2].children[2].tagName).toBe("UL");
-      expect(body.children[2].children[2].className).toBe("controls__list");
+      expect(body.children[2].children[1].tagName).toBe("UL");
+      expect(body.children[2].children[1].className).toBe("controls__list");
     });
   });
 

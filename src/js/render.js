@@ -7,15 +7,21 @@ export function createEl(tag, className, parent) {
 
 export function renderBasicTemplate(rootElement) {
   createEl("img", "map", rootElement);
+
   const weather = createEl("div", "weather", rootElement);
-  const controls = createEl("div", "controls", rootElement);
   createEl("div", "weather__city", weather);
   createEl("div", "weather__degrees", weather);
   createEl("div", "weather__ico", weather);
-  const input = createEl("input", "controls__input", controls);
+
+  const controls = createEl("div", "controls", rootElement);
+  const form = createEl("form", "controls__form", controls);
+  const input = createEl("input", "controls__input", form);
   input.setAttribute("placeholder", "Enter the name of the city");
-  const btn = createEl("button", "controls__btn", controls);
-  btn.innerText = "Show weather";
+  input.setAttribute("pattern", "^[a-zA-Z][a-zA-Z-\\s]+$");
+  input.setAttribute("required", "");
+  const btn = createEl("input", "controls__btn", form);
+  btn.setAttribute("type", "submit");
+  btn.value = "Show weather";
   createEl("ul", "controls__list", controls);
 }
 

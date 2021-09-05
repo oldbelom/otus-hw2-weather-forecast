@@ -16,12 +16,12 @@ describe("getData", () => {
       await getInitialData(getMap, getWeather);
       expect(fetch.mock.calls[0][0]).toEqual(geojsURL);
     });
-    it("called getMap function", async () => {
+    it("call getMap function", async () => {
       const fakeGetMap = jest.fn();
       await getInitialData(fakeGetMap, getWeather);
       expect(fakeGetMap).toHaveBeenCalled();
     });
-    it("called getWeather function", async () => {
+    it("call getWeather function", async () => {
       const fakeGetWeather = jest.fn();
       await getInitialData(getMap, fakeGetWeather);
       expect(fakeGetWeather).toBeCalled();
@@ -66,7 +66,7 @@ describe("getData", () => {
     it("render correct temp data", async () => {
       const degrees = document.querySelector(".weather__degrees");
       await getWeather();
-      expect(degrees.innerHTML).toBe("27");
+      expect(degrees.innerHTML).toBe("27°");
     });
     it("render icon", async () => {
       const icon = document.querySelector(".weather__ico");

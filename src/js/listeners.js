@@ -1,7 +1,8 @@
 import { createEl } from "./render";
 
-export function addButtonListener(btn, list, input, getMapCb, getWeatherCb) {
-  btn.addEventListener("click", () => {
+export function addFormListener(form, list, input, getMapCb, getWeatherCb) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
     const cities = localStorage.cities ? JSON.parse(localStorage.cities) : [];
 
     if (list.childElementCount >= 10) {

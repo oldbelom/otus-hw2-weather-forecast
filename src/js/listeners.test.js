@@ -1,74 +1,71 @@
-import { addButtonListener, addListListener } from "./listeners";
+import { addFormListener, addListListener } from "./listeners";
 
 describe("listeners", () => {
   let list;
   let li;
+  let form;
   let input;
-  let btn;
   let getMap;
   let getWeather;
 
   beforeEach(() => {
     document.body.innerHTML = `
-    <div class="controls__list">
-      <li class="controls__list-item"></li>
-    </div>
-    <div class="controls__input"></div>
-    <button class="controls__btn"></button>
-  `;
+      <div class="controls__list">
+        <li class="controls__list-item"></li>
+      </div>
+      <form class="controls__form">
+        <input class="controls__input">
+      <form>
+    `;
 
     list = document.querySelector(".controls__list");
-    input = document.querySelector(".controls__input");
-    btn = document.querySelector(".controls__btn");
     li = document.querySelector(".controls__list-item");
+    form = document.querySelector(".controls__form");
+    input = document.querySelector(".controls__input");
 
     getMap = jest.fn();
     getWeather = jest.fn();
   });
 
-  describe("addButtonListener", () => {
+  describe("addFormListener", () => {
     beforeEach(() => {
       list.innerHTML = "";
     });
 
-    it("call getMap function", () => {
-      addButtonListener(btn, list, input, getMap, getWeather);
-      btn.click();
-      expect(getMap).toHaveBeenCalled();
-    });
-    it("call getWeather function", () => {
-      addButtonListener(btn, list, input, getMap, getWeather);
-      btn.click();
+    it("call callback functions", () => {
+      addFormListener(form, list, input, getMap, getWeather);
+      form.submit();
       expect(getWeather).toHaveBeenCalled();
+      expect(getMap).toHaveBeenCalled();
     });
     it("add city to list", () => {
       input.value = "Paris";
-      addButtonListener(btn, list, input, getMap, getWeather);
+      addFormListener(form, list, input, getMap, getWeather);
       expect(list.childElementCount).toBe(0);
-      btn.click();
+      form.submit();
       expect(list.childElementCount).toBe(1);
     });
     it("don't add a city to the list if it already exists", () => {
       list.innerHTML = "";
       for (let i = 0; i < 3; i += 1) {
         input.value = "Monaco";
-        addButtonListener(btn, list, input, getMap, getWeather);
-        btn.click();
+        addFormListener(form, list, input, getMap, getWeather);
+        form.submit();
       }
       expect(list.childElementCount).toBe(1);
     });
     it("don't add more than 10 list items", () => {
       for (let i = 0; i < 15; i += 1) {
         input.value = `London${i}`;
-        addButtonListener(btn, list, input, getMap, getWeather);
-        btn.click();
+        addFormListener(form, list, input, getMap, getWeather);
+        form.submit();
       }
       expect(list.childElementCount).not.toBeGreaterThan(10);
     });
     it("clean input value", () => {
       input.value = "Chicago";
-      addButtonListener(btn, list, input, getMap, getWeather);
-      btn.click();
+      addFormListener(form, list, input, getMap, getWeather);
+      form.submit();
       expect(input.value).toBe("");
     });
   });
