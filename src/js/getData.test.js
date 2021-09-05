@@ -48,9 +48,6 @@ describe("getData", () => {
 
   describe("getWeather", () => {
     beforeEach(() => {
-      fetch.mockResponseOnce(
-        JSON.stringify({ main: { temp: 300 }, weather: [{ icon: "04d" }] })
-      );
       document.body.innerHTML = `
         <div class="weather__city">
         <div class="weather__degrees">
@@ -64,14 +61,27 @@ describe("getData", () => {
       expect(fetch.mock.calls.length).toEqual(1);
     });
     it("render correct temp data", async () => {
+      fetch.mockResponseOnce(
+        JSON.stringify({ main: { temp: 300 }, weather: [{ icon: "04d" }] })
+      );
       const degrees = document.querySelector(".weather__degrees");
       await getWeather();
       expect(degrees.innerHTML).toBe("27°");
     });
     it("render icon", async () => {
+      fetch.mockResponseOnce(
+        JSON.stringify({ main: { temp: 300 }, weather: [{ icon: "04d" }] })
+      );
       const icon = document.querySelector(".weather__ico");
       await getWeather();
       expect(icon.children[0].tagName).toBe("IMG");
+    });
+    it("try catch", async () => {
+      expect.assertions(1);
+      const city = document.querySelector(".weather__city");
+      fetch.mockReject(new Error());
+      await getWeather();
+      expect(city.innerHTML).toBe("Error loading weather data");
     });
   });
 });

@@ -24,15 +24,22 @@ export async function getWeather() {
   const cityName = document.querySelector(".weather__city");
   const degrees = document.querySelector(".weather__degrees");
   const icon = document.querySelector(".weather__ico");
-  const apiKey = "8f2c5761371185563563571cb3a56c37";
-  const city = localStorage.getItem("currentCity");
-  const response = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
-  );
-  const weatherData = await response.json();
-  cityName.innerHTML = city;
-  degrees.innerHTML = `${Math.ceil(weatherData.main.temp - 273)}&deg`;
-  icon.innerHTML =
-    `<img src="http://openweathermap.org/img/wn/` +
-    `${weatherData.weather[0].icon}@2x.png">`;
+  try {
+    const apiKey = "8f2c5761371185563563571cb3a56c37";
+    const city = localStorage.getItem("currentCity");
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+    );
+    const weatherData = await response.json();
+    cityName.innerHTML = city;
+    degrees.innerHTML = `${Math.ceil(weatherData.main.temp - 273)}&deg`;
+    icon.innerHTML =
+      `<img src="http://openweathermap.org/img/wn/` +
+      `${weatherData.weather[0].icon}@2x.png">`;
+  } catch (error) {
+    console.log(error);
+    cityName.innerHTML = "Error loading weather data";
+    degrees.innerHTML = "";
+    icon.innerHTML = "";
+  }
 }
