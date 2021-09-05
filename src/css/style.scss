@@ -19,7 +19,7 @@ body {
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
-  background-color: rgb(197, 236, 234);
+  background-color: #c5ecea;
 }
 
 #app {
@@ -49,22 +49,53 @@ body {
 }
 
 .weather {
-  min-width: 300px;
+  width: 300px;
+  max-width: 300px;
   height: 100%;
   text-align: center;
 
   &__city {
     font-size: 2rem;
     margin-bottom: 4rem;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
   }
 
   &__degrees {
     font-size: 3rem;
     margin-bottom: 3rem;
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
+  }
+
+  img {
+    filter: drop-shadow(0 0 7px rgba(0, 0, 0, 0.5));
   }
 }
 
 .controls {
+  &__input,
+  &__btn {
+    padding: 0.3rem;
+    border: 2px solid black;
+  }
+
+  &__input {
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+  }
+
+  &__btn {
+    margin-left: -2px;
+    margin-bottom: 1.5rem;
+    border-top-right-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+    cursor: pointer;
+    background-color: #c5ecea;
+
+    &:hover {
+      background-color: #88d1cd;
+    }
+  }
+
   &__list {
     margin: 0;
     padding: 0;
@@ -72,14 +103,16 @@ body {
 
   &__list-item {
     list-style: none;
-    margin-top: .6rem;
-    background-color: #7cda4c;
-    padding: .3rem 1rem;
-    border-radius: .2rem;
+    margin-top: 0.6rem;
+    padding: 0.3rem 1rem;
+    border-radius: 0.2rem;
+    background-color: #c5ecea;
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.5));
     cursor: pointer;
+    transition: filter 0.3s linear;
 
     &:hover {
-      background-color: #59bf25;
+      filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5));
     }
   }
 }
