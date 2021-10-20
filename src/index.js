@@ -8,10 +8,9 @@ const appContainer = document.querySelector("#app");
 renderBasicTemplate(appContainer);
 
 const list = document.querySelector(".controls__list");
-const input = document.querySelector(".controls__input");
 const form = document.querySelector(".controls__form");
 
 renderCitiesList(list);
 getInitialData(getMap, getWeather);
-addFormListener(form, list, input, getMap, getWeather);
+addFormListener(form, getMap, getWeather);
 addListListener(list, getMap, getWeather);
