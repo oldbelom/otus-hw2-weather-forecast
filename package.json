@@ -1,0 +1,55 @@
+{
+  "name": "weather-forecast",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "scripts": {
+    "lint": "eslint . && prettier --check .",
+    "lint:fix": "eslint . --fix && prettier --write .",
+    "test": "jest --coverage",
+    "prepare": "husky install",
+    "build": "webpack --node-env production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oldbelom/otus-hw2-weather-forecast.git"
+  },
+  "author": "Oleg Artemov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oldbelom/otus-hw2-weather-forecast/issues"
+  },
+  "homepage": "https://github.com/oldbelom/otus-hw2-weather-forecast#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.14.9",
+    "@types/jest": "^26.0.24",
+    "babel-jest": "^27.0.6",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest": "^24.4.0",
+    "html-webpack-plugin": "^5.3.2",
+    "husky": "^7.0.1",
+    "jest": "^27.0.6",
+    "jest-fetch-mock": "^3.0.3",
+    "lint-staged": "^11.1.2",
+    "mini-css-extract-plugin": "^2.2.0",
+    "prettier": "2.3.2",
+    "sass": "^1.38.0",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^4.0.0"
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix",
+    "*.{js,css,md,json,yml,html}": "prettier --write"
+  }
+}
